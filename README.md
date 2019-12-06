@@ -21,7 +21,7 @@ Min | Max
 
 e.g.
 
-https://craigchamberlain.github.io/moon-data/api/moon-phase-data/2083 -> 404 File not found. Http Status Code
+`https://craigchamberlain.github.io/moon-data/api/moon-phase-data/2083 -> 404 File not found. Http Status Code`
 
 ## Examples:
 
@@ -29,7 +29,7 @@ https://craigchamberlain.github.io/moon-data/api/moon-phase-data/2083 -> 404 Fil
 
 Returns a years worth of DateTime and Phase objects.  Phase is 0-3 for the quaters of a moon cycle as detailed in the table below with some sample representations.  Date, is the instance when each event will or has occured.
 
-[https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/)
+[https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/){:target="_blank"}
 
     [{"Date":"1700-01-05T10:30:00","Phase":2},{"Date":"1700-01-12T03:34:00","Phase":3},{"Date":"1700-01-20T04:20:00","Phase":0},{"Date":"1700-01-28T05:13:00","Phase":1},{"Date":"1700-02-03T21:05:00","Phase":2},{"Date":"1700-02-10T18:59:00","Phase":3},{"Date":"1700-02-18T23:33:00","Phase":0},{"Date":"1700-02-26T16:37:00","Phase":1},...]
 
@@ -47,7 +47,7 @@ Where Phase =
 
 Returns a years worth of DateTimes of the instances of a new moon.
 
-[https://craigchamberlain.github.io/moon-data/api/new-moon-data/1700/[index.json]]([https://craigchamberlain.github.io/moon-data/api/new-moon-data/1700/)
+[https://craigchamberlain.github.io/moon-data/api/new-moon-data/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/new-moon-data/1700/){:target="_blank"}
 
     ["1700-01-20T04:20:00","1700-02-18T23:33:00","1700-03-20T16:47:00","1700-04-19T06:51:00","1700-05-18T17:45:00","1700-06-17T02:16:00","1700-07-16T09:34:00","1700-08-14T16:47:00","1700-09-13T00:47:00","1700-10-12T10:15:00","1700-11-10T21:44:00","1700-12-10T11:44:00","1700-12-26T00:54:00"]
 
