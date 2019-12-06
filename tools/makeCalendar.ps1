@@ -27,12 +27,12 @@ function createYear($newMoons, $year){
     $i = 0
     foreach($month in $normalisedMonths){
             if ($i -ne $normalisedMonths.Length - 1 ){
-                $end = $normalisedMonths[($i + 1)].AddDays(-1)
+                $end = $normalisedMonths[($i + 1)]
             }
             else{
-                $end = $yearStart.AddYears(1).AddDays(-1)
+                $end = $yearStart.AddYears(1)
             }
-            $days = $end.Subtract($month).days + 1
+            $days = $end.Subtract($month).days
             $i ++
             @{Date = $month.Date.ToString('s'); Days = $days}
         }
