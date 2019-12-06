@@ -9,6 +9,15 @@ Based on data taken from the USNO api before it was taken down for maintainence.
 
 Data can be served at {year} directory or optionaly at {year}/index.json.  Adding the index.json will negate a 301 redirect to increase the speed of request and may be required if your client does not support redirects.
 
+## Date Range
+
+| Min: | 1700 |
+| Max: | 2082 |
+
+e.g.
+
+https://craigchamberlain.github.io/moon-data/api/moon-phase-data/2083 -> 404 File not found. Http Status Code
+
 ## Examples:
 
 ### Moon Phase Data 
@@ -19,10 +28,13 @@ Data can be served at {year} directory or optionaly at {year}/index.json.  Addin
 
 Where Phase =
 
-    0: NewMoon, // [\_\_\_\_]
-    1: FirstQuarter,//WaxingCressent, [\_\_|\)_]
-    2: FullMoon,// [\_(\_)\_]
-    3: LastQuarter// WainingCressent [\_(|\_\_]
+| ID | Name | Alt. | ascii Art | UTF-8 | ascii |
+| --- | --- | --- | --- | --- |  --- |
+| 0 | NewMoon |  | `[____]` | 🌑 </br> `(U+1F311; f0 9f 8c 91;)` | ∙ `(&#8729; &#x2219;)`
+| 1 | FirstQuarter | WaxingCressent | `[__\|)_]` | 🌓 </br> `(U+1F313; f0 9f 8c 93;)` | ⦈ `(&#10632; &#x2988;)` |
+| 2 | FullMoon |  | `[_(_)_]` | 🌕 </br> `(U+1F315; f0 9f 8c 95;)` | ○ `(&#9675; &#x25cb;)` \|\| </br> ∘ `(&#8728; &#x2218;)` |
+| 3 | LastQuarter | WainingCressent | `[_(\|__]` | 🌗 </br> `(U+1F317; f0 9f 8c 97;)` | ⦇ `(&#10631; &#x2987;)` |
+
 
 ### New Moon Data 
 
