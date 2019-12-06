@@ -11,8 +11,9 @@ Data can be served at {year} directory or optionaly at {year}/index.json.  Addin
 
 ## Date Range
 
-| Min: | 1700 |
-| Max: | 2082 |
+Min | Max 
+--- | ---
+1700 | 2082
 
 e.g.
 
