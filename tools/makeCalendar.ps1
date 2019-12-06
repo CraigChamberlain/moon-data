@@ -23,14 +23,14 @@ function createYear($newMoons, $year){
         }
     $i = 0
     foreach($month in $normalisedMonths){
-            if ($i -ne $normalisedMonths.Length){
+            if ($i -ne $normalisedMonths.Length - 1 ){
                 $end = $normalisedMonths[($i + 1)].AddDays(-1)
             }
             else{
                 $end = $yearStart.AddYears(1).AddDays(-1)
             }
             $i ++
-            $month, $end.Subtract($month).days
+            @{Date = $month.Date.ToString('s'); Days = ($end.Subtract($month).days + 1)}
         }
     
 }
@@ -46,3 +46,19 @@ function CreateNewMoonJson(){
             Out-File $file
     }
 }
+
+function CreateLunarSolarCalendar(){
+    $years = Get-ChildItem './api/new-moon-data/' -Recurse -File 
+    $years | 
+    ForEach-Object {
+        $file = ($_.FullName -replace "new-moon-data", "lunar-solar-calendar" );
+        $year = $_.Directory.Name;
+        $newMoons = readJson -file $_;
+            
+        createYear -newMoons $newMoons -year $year | 
+           ConvertTo-Json -Compress | 
+           Out-File $file -NoNewline
+    }
+}
+
+CreateLunarSolarCalendar
