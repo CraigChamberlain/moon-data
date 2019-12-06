@@ -16,11 +16,14 @@ function normaliseDateTime($date){
 
 function createYear($newMoons, $year){
     $yearStart = Get-Date "$year/1/1"
-    $months = @($yearStart) + $newMoons
     $normalisedMonths = 
-        foreach($month in $months){
+        foreach($month in $newMoons){
             normaliseDateTime $month 
         }
+    if($normalisedMonths[0] -ne $yearStart)
+    {
+        $normalisedMonths = @($yearStart) + $normalisedMonths 
+    }
     $i = 0
     foreach($month in $normalisedMonths){
             if ($i -ne $normalisedMonths.Length - 1 ){
@@ -29,8 +32,9 @@ function createYear($newMoons, $year){
             else{
                 $end = $yearStart.AddYears(1).AddDays(-1)
             }
+            $days = $end.Subtract($month).days + 1
             $i ++
-            @{Date = $month.Date.ToString('s'); Days = ($end.Subtract($month).days + 1)}
+            @{Date = $month.Date.ToString('s'); Days = $days}
         }
     
 }
