@@ -65,4 +65,21 @@ function CreateLunarSolarCalendar(){
     }
 }
 
-CreateLunarSolarCalendar
+function CreateLunarSolarCalendarSingleMonths(){
+    $years = Get-ChildItem './api/lunar-solar-calendar/' -Recurse -File -Depth 1   
+    $years | 
+    ForEach-Object {
+        $file = $_.FullName;
+        $Months = readJson -file $_;
+        $i = 0
+        foreach($Month in $Months) {
+            $Name = $file -replace "index.json", "$i/index.json"
+            mkdir  ($Name -replace "index.json", "") 
+            $Month | 
+            ConvertTo-Json -Compress | 
+            Out-File $Name -NoNewline
+            $i ++
+        }    
+
+    }
+}
