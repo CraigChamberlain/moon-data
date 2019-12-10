@@ -138,3 +138,47 @@ function CreateLunarSolarCalendarDetailed(){
         } 
     }
 }
+
+function CreateLunarSolarCalendarDetailedExtra(){
+    $years = Get-ChildItem './api/lunar-solar-calendar-detailed/' -Recurse -File -Depth 1 
+    $years | 
+    ForEach-Object {
+        $Months = readJson -file $_;  
+        $file = $_.FullName;
+        $ExtMonths =    
+            for($o = 0; $o -lt $Months.Count; $o++) {
+                $Phases = $Months[$o].Phases
+                $ExtPhases = @()
+                for ($i = 0; $i -lt $Phases.Count; $i++) {
+                        $FirstDay = normaliseDateTime $Phases[$i].Date    
+
+                        if ($i -ne $Phases.Count - 1){
+                           $nextPhase = normaliseDateTime -date $Phases[$i + 1].Date
+                             
+                        }
+                        elseif($o -ne $Months.Count - 1) {
+                            $nextPhase = normaliseDateTime $Months[$o + 1].Phases[0].Date
+                        }
+                        else{
+
+                            $nextPhase = normaliseDateTime $Months[0].Phases[0].Date.AddYears(1)
+                        }
+                        $days = $nextPhase.Subtract($FirstDay).Days
+                        $lastDay = $nextPhase.AddDays(-1)
+                        $ExtPhases +=
+                            New-Object PSObject -Property @{ Days = $days; LastDay = $lastDay; FirstDay = $FirstDay; Phase =  $Phases[$i].Phase; DateTime = $Phases[$i].Date}
+                }
+                New-Object PSObject -Property @{ Month = $Months[$o].Month ; Phases = $ExtPhases; Days = $Months[$o].Days; FirstDay = $Months[$o].Date} 
+            }
+
+        $ExtMonths | ConvertTo-Json -Compress -Depth 3 | Out-File $file -NoNewline
+        $i = 0
+        foreach($Month in $ExtMonths) {
+            $Name = $file -replace "index.json", "$i/index.json"
+            $Month |
+            ConvertTo-Json -Compress | 
+            Out-File $Name -NoNewline
+            $i ++
+        } 
+    }
+}
