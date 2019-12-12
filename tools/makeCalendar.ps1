@@ -89,26 +89,27 @@ function AttachPhases($months){
     $PhaseData = Get-ChildItem "./api/moon-phase-data/$Year" -Recurse -File | Get-Content | ConvertFrom-Json
  
     for ($i = 0; $i -lt $months.Count; $i++) {
-        if ($i -ne $months.Count - 1){
+        $month = $months[$i]
+        if ($i -ne $months.Count - 1){ ## Not the last month of year
             $Phases =  
-                $PhaseData | Where-Object {$_.Date -ge $months[$i].Date -and $_.Date -lt $months[$i+1].Date}
-            if ($i -eq 0 -and $PhaseData[0].Date -ne  $months[$i+1].Date ){
+                $PhaseData | Where-Object {$_.Date -ge $month.Date -and $_.Date -lt $months[$i+1].Date}
+            if ($i -eq 0 -and (normaliseDateTime($PhaseData[0].Date)) -ne  $months[0].Date ){ # First Month of Year & Date new moon not first day of year
                 
                 $Phases =  
-                         @(New-Object PSObject -Property @{ Date = $months[$i].Date; Phase = -1}) + $Phases
+                         @(New-Object PSObject -Property @{ Date = $month.Date; Phase = -1}) + $Phases
                 }
         }
-        else {
-            $Phases =  
-                $PhaseData | Where-Object {$_.Date -ge $months[$i].Date}
+        else {  # Last month of year
+            $Phases =   
+                $PhaseData | Where-Object {$_.Date -ge $month.Date}
         }
     
         $props = 
             @{
                 Month = $i; 
                 Phases = $Phases; 
-                Days = $months[$i].Days; 
-                Date = $months[$i].Date;
+                Days = $month.Days; 
+                Date = $month.Date;
             }
 
         New-Object PSObject -Property $props
@@ -141,7 +142,7 @@ function CreateLunarSolarCalendarDetailed(){
 
 function CreateLunarSolarCalendarDetailedExtra(){
     $years = Get-ChildItem './api/lunar-solar-calendar-detailed/' -Recurse -File -Depth 1 
-    $years | 
+    $years |  
     ForEach-Object {
         $Months = readJson -file $_;  
         $file = $_.FullName;
@@ -182,3 +183,8 @@ function CreateLunarSolarCalendarDetailedExtra(){
         } 
     }
 }
+
+Get-ChildItem './api/lunar-solar-calendar-detailed/' -Recurse -File -Depth 1 | 
+    #Select-Object -First 1 |
+    ForEach-Object { readJson -file $_;} |
+    ForEach-Object { $_ | Where-Object {$_.Phases.Count -gt 4}}
