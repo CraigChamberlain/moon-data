@@ -183,8 +183,7 @@ function CreateLunarSolarCalendarDetailedExtra(){
         } 
     }
 }
-
-Get-ChildItem './api/lunar-solar-calendar-detailed/' -Recurse -File -Depth 1 | 
-    #Select-Object -First 1 |
-    ForEach-Object { readJson -file $_;} |
-    ForEach-Object { $_ | Where-Object {$_.Phases.Count -gt 4}}
+function Copy-ToWebsite(){
+Get-ChildItem ./api/lunar-solar-calendar-detailed/ -Recurse -Depth 1 -File | 
+    %{ $name = $_.Directory.Name; Copy-Item -Destination "../CalendarJekyll/_data/years/y$name.json" -Path $_ }
+}
