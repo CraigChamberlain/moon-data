@@ -1,25 +1,26 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
+using SolarLunarName.Standard.Types;
 using SolarLunarName.Standard.ApplicationServices;
 using System.Linq;
 using System.IO;
 
 namespace SolarLunarName.Standard.Tests
 {
-    public class LunarSolarCalendarAPIShould
+    public class LunarSolarCalendarDetailedAPIShould
     {   
         private readonly CalendarDataService _calendarDataService;
-        private const string BaseDir = @"../../../../../moon-data/api/lunar-solar-calendar";
+        private const string BaseDir = @"../../../../../moon-data/api/lunar-solar-calendar-detailed";
 
-        public LunarSolarCalendarAPIShould(){
-            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(BaseDir);
-            _calendarDataService = new CalendarDataService(client);
+        public LunarSolarCalendarDetailedAPIShould(){
+            var client = new Standard.RestServices.LocalJson.LunarCalendarClientDetailed(BaseDir);
+            _calendarDataService = new CalendarDataService((ISolarLunarCalendarClient)client);
         }
 
         [Theory]
         [MemberData(nameof(YearRange))]
-        public void LunarSolarCalendarAPIShould_HaveEither13or14Months(int year)
+        public void LunarSolarCalendarDetailedAPIShould_HaveEither13or14Months(int year)
         {
             var calendar = _calendarDataService.GetSolarLunarYear(year);
             var numberOfMonths = calendar.Count();
@@ -29,7 +30,7 @@ namespace SolarLunarName.Standard.Tests
 
         [Theory]
         [MemberData(nameof(YearRange))]
-        public void LunarSolarCalendarAPIShould_HaveMonthsOf30DaysOrLess(int year)
+        public void LunarSolarCalendarDetailedAPIShould_HaveMonthsOf30DaysOrLess(int year)
         {
             var calendar = _calendarDataService.GetSolarLunarYear(year);
             var first = calendar.First().Days;
@@ -44,7 +45,7 @@ namespace SolarLunarName.Standard.Tests
 
         [Theory]
         [MemberData(nameof(YearRange))]
-        public void LunarSolarCalendarAPIShould_DaysTotalling365(int year)
+        public void LunarSolarCalendarDetailedAPIShould_DaysTotalling365(int year)
         {   
             var startOfNextYear = new DateTime(year + 1 , 1, 1);
             var actualDays = startOfNextYear.AddDays(-1).DayOfYear;
@@ -55,7 +56,7 @@ namespace SolarLunarName.Standard.Tests
 
         [Theory]
         [MemberData(nameof(YearRange))]
-        public void LunarSolarCalendarAPIShould_MonthsShouldNotSkipOrDuplicateDays(int year)
+        public void LunarSolarCalendarDetailedAPIShould_MonthsShouldNotSkipOrDuplicateDays(int year)
         {   
             var calendar = _calendarDataService.GetSolarLunarYear(year);
             var firstMonths = calendar.SkipLast(1);
@@ -83,7 +84,7 @@ namespace SolarLunarName.Standard.Tests
 
         [Theory]
         [MemberData(nameof(YearRange))]
-        public void LunarSolarCalendarAPIShould_MonthsCombineToEqualYear(int year)
+        public void LunarSolarCalendarDetailedAPIShould_MonthsCombineToEqualYear(int year)
         {
             
             var yearDir = Path.Combine(BaseDir, year.ToString());
