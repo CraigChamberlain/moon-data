@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-using SolarLunarName.Standard.Types;
+using SolarLunarName.SharedTypes.Interfaces;
 using SolarLunarName.Standard.ApplicationServices;
 using System.Linq;
 using System.IO;
+using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.Standard.Tests
 {
@@ -93,7 +94,7 @@ namespace SolarLunarName.Standard.Tests
             var assembledCalendar = 
                 months
                     .Select(month => File.ReadAllText(Path.Combine(month, "index.json")))
-                    .Select(month => Newtonsoft.Json.JsonConvert.DeserializeObject<Models.LunarSolarCalendarMonth>(month))
+                    .Select(month => Newtonsoft.Json.JsonConvert.DeserializeObject<LunarSolarCalendarMonth>(month))
                     .OrderBy(month => month.FirstDay)
                     .ToList();
 
