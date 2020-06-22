@@ -1,0 +1,9 @@
+language: csharp
+mono: none
+dotnet: 3.0
+
+install:
+  - dotnet restore ./tests/moon-data.Tests.csproj
+script:
+  - dotnet build /p:Configuration=Release ./tests
+  - dotnet test  /p:Configuration=Release ./tests
