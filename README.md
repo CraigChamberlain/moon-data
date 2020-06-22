@@ -1,6 +1,9 @@
 # moon-data
 __static json api__
 
+[![Build Status](https://travis-ci.com/CraigChamberlain/moon-data.svg?branch=master)](https://travis-ci.com/CraigChamberlain/moondata)
+
+
 Based on data taken from the [The United States Naval Observatory (USNO) api](https://aa.usno.navy.mil/data/docs/api.php#phase){:target="_blank"} before it was taken down for maintainence.  Reuse is with permission of USNO but they have not checked my work for errors and can not be held responsable for any errors hereinafter.
 [Example of original response](/USNO/ExampleYear.json){:target="_blank"}
 
