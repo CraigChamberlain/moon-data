@@ -1,0 +1,12 @@
+{
+    "name": "@craigchamberlain/moon-data",
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CraigChamberlain/moon-data.git"
+    },
+    "author": "Craig Chamberlain",
+    "publishConfig": {
+      "registry":"https://npm.pkg.github.com/"
+    }
+}
