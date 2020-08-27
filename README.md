@@ -4,7 +4,7 @@ __static json api__
 [![Build Status](https://travis-ci.com/CraigChamberlain/moon-data.svg?branch=master)](https://travis-ci.com/CraigChamberlain/moondata)
 
 
-Based on data taken from the [The United States Naval Observatory (USNO) api](https://aa.usno.navy.mil/data/docs/api.php#phase) before it was taken down for maintainence.  Reuse is with permission of USNO but they have not checked my work for errors and can not be held responsable for any errors hereinafter.
+Based on data taken from the [The United States Naval Observatory (USNO) api](https://aa.usno.navy.mil/data/docs/api.php#phase) before it was taken down for maintenance.  Reuse is with permission of USNO but they have not checked my work for errors and can not be held responsible for any errors hereinafter.
 [Example of original response](/USNO/ExampleYear.json)
 
 ## UTC
@@ -15,7 +15,7 @@ All times are UTC as the moon appears in the same phase for all locations on the
   - new-moon-data _/api/new-moon-data/{year}[/index.json]_
   - lunar-solar-calendar _/api/lunar-solar-calendar/{year}[/index.json]_
 
-Data can be served at {year} directory or optionaly at {year}/index.json.  Adding the index.json will negate a 301 redirect to increase the speed of request and may be required if your client does not support redirects.
+Data can be served at {year} directory or optionally at {year}/index.json.  Adding the index.json will negate a 301 redirect to increase the speed of request and may be required if your client does not support redirects.
 
 ## Date Range
 
@@ -31,7 +31,7 @@ e.g.
 
 ### Moon Phase Data 
 
-Returns a years worth of DateTime and Phase objects.  Phase is 0-3 for the quaters of a moon cycle as detailed in the table below with some sample representations.  Date, is the instance when each event will or has occured.
+Returns a years worth of DateTime and Phase objects.  Phase is 0-3 for the quarters of a moon cycle as detailed in the table below with some sample representations.  Date, is the instance when each event will or has occurred.
 
 [https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/)
 
