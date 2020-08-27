@@ -31,7 +31,7 @@ e.g.
 
 ### Moon Phase Data 
 
-Returns a years worth of DateTime and Phase objects.  Phase is 0-3 for the quarters of a moon cycle as detailed in the table below with some sample representations.  Date, is the instance when each event will or has occurred.
+Returns a year's worth of DateTime and Phase objects.  Phase is 0-3 for the quarters of a moon cycle as detailed in the table below with some sample representations.  Date, is the instance when each event will occur or has occurred.
 
 [https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/moon-phase-data/1700/)
 
@@ -49,14 +49,14 @@ Where Phase =
 
 ### New Moon Data 
 
-Returns a years worth of DateTimes of the instances of a new moon.
+Returns a year's worth of DateTimes of the instances of a new moon.
 
 [https://craigchamberlain.github.io/moon-data/api/new-moon-data/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/new-moon-data/1700/)
 
     ["1700-01-20T04:20:00","1700-02-18T23:33:00","1700-03-20T16:47:00","1700-04-19T06:51:00","1700-05-18T17:45:00","1700-06-17T02:16:00","1700-07-16T09:34:00","1700-08-14T16:47:00","1700-09-13T00:47:00","1700-10-12T10:15:00","1700-11-10T21:44:00","1700-12-10T11:44:00","1700-12-26T00:54:00"]
 
 ### Lunar Solar Calendar
-Returns a years worth of Lunar Solar Months according to [https://craigchamberlain.github.io//SolarLunarDate/my-calendar](this specification) in a DateTime and Number of Days pair.  The date indicates the first day of the Lunar Solar month in UTC.  A further process must be applied to output in the Lunisolar format specified or to convert any other given UTC time into the Lunisolar format.
+Returns a year's worth of Lunar Solar Months according to [https://craigchamberlain.github.io//SolarLunarDate/my-calendar](this specification) in a DateTime and Number of Days pair.  The date indicates the first day of the Lunar Solar month in UTC.  A further process must be applied to output in the Lunisolar format specified or to convert any other given UTC time into the Lunisolar format.
 
 [https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/1700/)
 
