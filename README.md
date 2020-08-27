@@ -42,9 +42,9 @@ Where Phase =
 | ID | Name | Alt. | ascii Art | UTF-8 | ascii |
 | --- | --- | --- | --- | --- |  --- |
 | 0 | NewMoon |  | `[____]` | 🌑 `(U+1F311; f0 9f 8c 91;)` | ∙ `(&#8729; &#x2219;)`
-| 1 | FirstQuarter | WaxingCressent | `[__|)_]` | 🌓 `(U+1F313; f0 9f 8c 93;)` | ⦈ `(&#10632; &#x2988;)` |
+| 1 | FirstQuarter | WaxingCrescent | `[__|)_]` | 🌓 `(U+1F313; f0 9f 8c 93;)` | ⦈ `(&#10632; &#x2988;)` |
 | 2 | FullMoon |  | `[_(_)_]` | 🌕 `(U+1F315; f0 9f 8c 95;)` | ○ `(&#9675; &#x25cb;)` \|\| ∘ `(&#8728; &#x2218;)` |
-| 3 | LastQuarter | WainingCressent | `[_(|__]` | 🌗 `(U+1F317; f0 9f 8c 97;)` | ⦇ `(&#10631; &#x2987;)` |
+| 3 | LastQuarter | WaningCrescent | `[_(|__]` | 🌗 `(U+1F317; f0 9f 8c 97;)` | ⦇ `(&#10631; &#x2987;)` |
 
 
 ### New Moon Data 
