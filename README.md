@@ -61,3 +61,6 @@ Returns a year's worth of Lunar Solar Months according to [this specification](h
 [https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/1700/[index.json]](https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/1700/)
 
     [{"Date":"1700-01-01T00:00:00","Days":19},{"Date":"1700-01-20T00:00:00","Days":29},{"Date":"1700-02-18T00:00:00","Days":30},{"Date":"1700-03-20T00:00:00","Days":30},{"Date":"1700-04-19T00:00:00","Days":29},{"Date":"1700-05-18T00:00:00","Days":30},{"Date":"1700-06-17T00:00:00","Days":29},{"Date":"1700-07-16T00:00:00","Days":29},{"Date":"1700-08-14T00:00:00","Days":30},{"Date":"1700-09-13T00:00:00","Days":29},{"Date":"1700-10-12T00:00:00","Days":29},{"Date":"1700-11-10T00:00:00","Days":30},{"Date":"1700-12-10T00:00:00","Days":22}]
+    
+API files are available as node package for hosting or accessing locally:
+https://github.com/CraigChamberlain/moon-data/packages/281384
