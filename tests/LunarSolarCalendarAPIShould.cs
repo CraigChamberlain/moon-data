@@ -1,20 +1,17 @@
 using System;
-using System.Collections.Generic;
 using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
 using System.Linq;
 using System.IO;
 using SolarLunarName.SharedTypes.Models;
 
-namespace SolarLunarName.Standard.Tests
+namespace SolarLunarName.Standard.Tests 
 {
-    public class LunarSolarCalendarAPIShould
+    public class LunarSolarCalendarAPIShould : CommonTests
     {   
-        private readonly CalendarDataService _calendarDataService;
-        private const string BaseDir = @"../../../../../moon-data/api/lunar-solar-calendar";
-
-        public LunarSolarCalendarAPIShould(){
-            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(BaseDir);
+        protected readonly CalendarDataService _calendarDataService;
+        public LunarSolarCalendarAPIShould(string path = Paths.LunarSolarCalendar) :base(path){
+            var client = new Standard.RestServices.LocalJson.LunarCalendarClientDetailed(_resourcePath);
             _calendarDataService = new CalendarDataService(client);
         }
 
@@ -87,7 +84,7 @@ namespace SolarLunarName.Standard.Tests
         public void LunarSolarCalendarAPIShould_MonthsCombineToEqualYear(int year)
         {
             
-            var yearDir = Path.Combine(BaseDir, year.ToString());
+            var yearDir = Path.Combine(_resourcePath, year.ToString());
             var months = Directory.GetDirectories(yearDir);
             
             var assembledCalendar = 
@@ -109,8 +106,6 @@ namespace SolarLunarName.Standard.Tests
         }
 
   
-        public static IEnumerable<object[]> YearRange => Enumerable.Range(1700,381).Select(x => new object[]{x});
-
 
     }
 }

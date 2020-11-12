@@ -1,18 +1,19 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-using SolarLunarName.Standard.ApplicationServices;
+using System.Text.Json;
+using System.IO;
 using System.Linq;
 using SolarLunarName.Standard.RestServices.LocalJson;
 
 namespace SolarLunarName.Standard.Tests
 {
-    public class NewMoonDataAPIShould
+    public class NewMoonDataAPIShould : CommonTests
     {   
         private readonly MoonDataClient _client;
 
-        public NewMoonDataAPIShould(){
-            _client = new Standard.RestServices.LocalJson.MoonDataClient(@"../../../../../moon-data/api/new-moon-data");
+        public NewMoonDataAPIShould():base(Paths.NewMoon){
+            _client = new Standard.RestServices.LocalJson.MoonDataClient(_resourcePath);
         }
 
         [Theory]
@@ -65,8 +66,7 @@ namespace SolarLunarName.Standard.Tests
         }
 
   
-        public static IEnumerable<object[]> YearRange => Enumerable.Range(1700,381).Select(x => new object[]{x});
-
+        
 
     }
 }
